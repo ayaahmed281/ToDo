@@ -1,0 +1,41 @@
+.panel{
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  margin: 0;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow:rgb(23 21 21 / 21%) 0 2px 4px;
+  color: #333;
+  overflow: visible;
+  margin: 10%;
+  position: relative;
+}
+svg{
+  width: 70px;
+  height: 70px;
+  align-items: center;
+  
+}
+.content{
+  display: flex;
+  align-items: center;
+
+}
+.arrow{
+  position: absolute;
+  right: 25px;
+  width: 25px;
+  transform: rotate(180deg);
+}
+.desc{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 10px;
+  color:black;
+}
+.margin{
+  width: calc(100% - 40px);
+}

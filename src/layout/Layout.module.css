@@ -1,0 +1,19 @@
+
+.container{
+  background-image: url("../assets/images/halfBg.png");
+  background-color: #fdfdfd;
+  background-repeat:no-repeat;
+background-size:contain;
+  background-color: #fdfdfd;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+section{
+  width: 100%;
+}

@@ -1,0 +1,11 @@
+.button-container {
+  position: fixed;
+}
+
+.button {
+  outline: none;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+}
