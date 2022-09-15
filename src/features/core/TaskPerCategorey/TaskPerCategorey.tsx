@@ -3,6 +3,7 @@ import { Task } from "../../../core/models/task-model";
 import { GlobalContext } from "../../../state/context";
 import TaskCategoryDescription from "../../shared/TaskCategoryDescription/TaskCategoryDescription";
 import Input from "../../../components/input/input";
+import { Content } from "./styles";
 const TasksPerCategoryComponent: any = () => {
   const {
     tasks: {
@@ -35,7 +36,7 @@ const TasksPerCategoryComponent: any = () => {
           tasksPerCategory[selectedCategoryName].map(
             (task: Task, i: number) => {
               return (
-                <div key={i}>
+                <Content  key={i}>
                   <div>
                     <Input
                       id={i}
@@ -47,7 +48,7 @@ const TasksPerCategoryComponent: any = () => {
                       }}
                     />
                   </div>
-                </div>
+                </Content>
               );
             }
           )}
