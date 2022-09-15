@@ -44,3 +44,15 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+## TODo_UnI Project
+kindly find here my way of thinking about the TODO idea until I meet you tomorrow.
+1.	Is it Designed from scratch inResponsive starting with Mobile first. 
+2.	Mockup Screen :-https://app.uizard.io/p/f01f682f
+3. UX Screen:-https://app.uizard.io/p/f01f682f
+4. All icons from https://www.iconfinder.com/
+5. Design for Backend Api to follow the screens :- https://drive.google.com/file/d/13C46ojk4bEz__HYizH_ebsFktBQgrMLS/view?usp=drive_open
+6. used mockup as stubs from here :- https://mockapi.io/clone/63214b9dfd698dfa29f51b04 
+7. Technology used && Jira Board :- https://trello.com/invite/accept-board
+8.	TODo_UnI  "version": "1.1.0", deployed on https://whispering-journey-62141.herokuapp.com/ (start with mobile view) 😊 
+## EnJoy Organize your Life  :)
+
