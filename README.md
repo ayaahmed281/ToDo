@@ -45,7 +45,6 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 ## TODo_UnI Project
-kindly find here my way of thinking about the TODO idea until I meet you tomorrow.
 1.	Is it Designed from scratch inResponsive starting with Mobile first. 
 2.	Mockup Screen :-https://app.uizard.io/p/f01f682f
 3. UX Screen:-https://app.uizard.io/p/f01f682f
@@ -54,6 +53,7 @@ kindly find here my way of thinking about the TODO idea until I meet you tomorro
 6. used mockup as stubs from here :- https://mockapi.io/clone/63214b9dfd698dfa29f51b04 
 7. Technology used && Jira Board :- https://trello.com/invite/accept-board
 8.	TODo_UnI  "version": "1.1.0", deployed on https://whispering-journey-62141.herokuapp.com/ (start with mobile view) 😊 
-## EnJoy Organize your Life  :)
+## EnJoy and Organize your Life  :) ;)
+
 ![image](https://user-images.githubusercontent.com/21292656/190374616-d9b6e87a-556e-49f5-87e5-c5851cf04e92.png)
 
