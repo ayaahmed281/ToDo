@@ -1,66 +1,74 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TaskCategoryDescription from "../../shared/TaskCategoryDescription/TaskCategoryDescription";
 import { useHistory } from "react-router-dom";
 import { GlobalContext } from "../../../state/context";
 
-
-
 const AllTasks: React.FC = () => {
-
   const {
     tasks: {
-      state: {  allTasks },
+      state: {
+        categoryGroups,
+        allTasks,
+        tasksPerCategory,
+        selectedCategoryName,
+      },
       dispatch,
     },
   } = useContext(GlobalContext);
   const history = useHistory();
-const groupBy = (allTasks:[]) => allTasks.reduce(
-  (result, item) => ({
-    ...result,
-    [item['category']]: [
-      ...(result[item['category']] || []),
-      item,
-    ],
-  }), 
-  {},
-);
-var arr = []
-const groupdtask:any= groupBy(allTasks);
-console.log(groupdtask)
-for (const property in groupdtask) {
-  const length = groupdtask[property].length
-  arr.push({name:property,length,categoryID: groupdtask[property][0].categoryID})
-}
-console.log(arr)
-  const navigateTOCategory = (categoryID:string) => {
-    const tasks = allTasks.filter(
-      (task:any) => task.categoryID === categoryID
-    );
-    dispatch({ type: "setTasksPerCategory", value: tasks });
-    history.push(`${"/task/" + categoryID}`);
-  };
 
- 
+  useEffect(() => {
+    if (categoryGroups.length == 0) {
+      const groupBy = (allTasks: []) =>
+        allTasks.reduce(
+          (result, item) => ({
+            ...result,
+            [item["category"]]: [...(result[item["category"]] || []), item],
+          }),
+          {}
+        );
+      const groupedTask = groupBy(allTasks);
+      dispatch({ type: "setTasksPerCategory", value: groupedTask });
+      const arr = [];
+      for (const property in tasksPerCategory) {
+        arr.push({
+          name: property,
+          length: tasksPerCategory[property].length,
+          categoryID: tasksPerCategory[property][0].categoryID,
+        });
+      }
+      dispatch({ type: "setCategoryGroups", value: arr });
+    }
+  }, [categoryGroups]);
+
+  const navigateTOCategory = (categoryName: string) => {
+    dispatch({
+      type: "setSelectedCategoryName",
+      value: categoryName,
+    });
+    history.push(`${"/task/" + categoryName}`);
+  };
 
   return (
     <section>
-    {arr.map((selector, i) => {
-      return (
-        <div
-          key={i}
-          onClick={() => {
-            navigateTOCategory(selector.categoryID);
-          }}
-        >
-          <TaskCategoryDescription
-            categoryName={selector.name}
-            totalTaskRemaining={selector.length}
-            showArrow={true}
-          />
-        </div>
-      );
-    })}
-  </section>
+      {categoryGroups.length &&
+        categoryGroups.map((category: any, i: any) => {
+          return (
+            <div
+              key={i}
+              onClick={() => {
+                navigateTOCategory(category.name);
+              }}
+            >
+              <TaskCategoryDescription
+                categoryName={category.name}
+                totalTaskRemaining={category.length}
+                showArrow={true}
+              />
+            </div>
+          );
+        })}
+    </section>
   );
 };
 

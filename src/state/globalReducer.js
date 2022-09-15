@@ -1,5 +1,6 @@
 export const globalDefaultState = {
   name: "",
+  loading: false,
 };
 
 export const globalReducer = (state, action) => {
@@ -7,6 +8,9 @@ export const globalReducer = (state, action) => {
   switch (type) {
     case "setUserName": {
       return { ...state, name: value };
+    }
+    case "setLoaderVisibility": {
+      return { ...state, loading: value };
     }
     default: {
       return { ...state };

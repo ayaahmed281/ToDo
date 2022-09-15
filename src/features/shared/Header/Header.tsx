@@ -2,10 +2,9 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "../../../assets/svg/person.svg";
 import { ReactComponent as Menu } from "../../../assets/svg/arrow-left.svg";
-import styles from "./Header.module.css";
 
 import { GlobalContext } from "../../../state/context";
-import { Header } from "./styles";
+import { Header, BurgerMenu } from "./styles";
 
 const PageHeader: React.FC<{}> = ({}) => {
   const {
@@ -23,7 +22,7 @@ const PageHeader: React.FC<{}> = ({}) => {
   if (!name) return null;
   return (
     <>
-    <div className={styles.burgerMenu}  onClick={back}><Menu/> </div>
+    <BurgerMenu   onClick={back}><Menu/> </BurgerMenu>
     <Header>
     <div className={"logo"}>
     </div>

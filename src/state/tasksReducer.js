@@ -1,36 +1,38 @@
 export const tasksDefaultState = {
-  selectedCategoryId: "1",
   tasksPerCategory: [],
   allTasks: [],
+  categoryGroups: [],
+  selectedCategoryName: "",
 };
 
 export const taskReducer = (state, action) => {
   const { type, value } = action;
   switch (type) {
-    case "setSelectedCategoryId": {
-      console.log(value);
-
-      return {
-        ...state,
-        selectedCategoryId: value,
-      };
-    }
-
     case "setAllTasks": {
-      console.log(value);
       return {
         ...state,
         allTasks: value,
       };
     }
     case "setTasksPerCategory": {
-      console.log(value);
-
       return {
         ...state,
         tasksPerCategory: value,
       };
     }
+    case "setCategoryGroups": {
+      return {
+        ...state,
+        categoryGroups: value,
+      };
+    }
+    case "setSelectedCategoryName": {
+      return {
+        ...state,
+        selectedCategoryName: value,
+      };
+    }
+
     default: {
       return { ...state };
     }

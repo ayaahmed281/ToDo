@@ -1,22 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import classes from "./Layout.module.css";
+import { Container, Content } from "./Layout.styles.js";
 import PageHeader from "../features/shared/Header/Header";
+import PageFooter from "../features/shared/Footer/Footer";
+import { useContext } from "react";
 
-const Layout: React.FC<{ children: any }> = props => {
+import { GlobalContext } from "../state/context";
+import { useHistory } from "react-router-dom";
+
+const Layout: React.FC<{ children: any }> = (props) => {
+  const history = useHistory();
+  const {
+    global: {
+      state: { name },
+    },
+  } = useContext(GlobalContext);
+
+  useEffect(() => {
+    if (!name) history.push(`/`);
+  }, []);
+
   const { children } = props;
   return (
-    <div className={classes.container}>
-      <PageHeader/>
-
-
+    <Container>
+      <PageHeader />
+      <Content>
       {children}
-    </div>
+      </Content>
+      <PageFooter />
+    </Container>
   );
 };
 
 export default Layout;
 
 Layout.propTypes = {
-  children: PropTypes.any.isRequired
+  children: PropTypes.any.isRequired,
 };

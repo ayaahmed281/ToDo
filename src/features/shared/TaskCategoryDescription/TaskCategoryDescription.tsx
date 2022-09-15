@@ -9,6 +9,7 @@ import { ReactComponent as shoppingIcon } from "../../../assets/svg/shopping.svg
 const imagesPath:any = {
     "Family": PersonalIcon,
     "Today":TodayIcon,
+    "Planned":TodayIcon,
     'Work': WorkIcon,
     'Personal': PersonalIcon,
     'Shopping': shoppingIcon,

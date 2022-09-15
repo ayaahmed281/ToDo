@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import getAllTasks from "../../../services/get/getAllTasks/getTaskByID";
+import { Spinner } from "../../../components/Spinner/Spinner";
+import getAllTasks from "../../../services/get/getAllTasks/getAllTasks";
 import postAuthToken from "../../../services/post/postAuthToken/postAuthToken";
 import { GlobalContext } from "../../../state/context";
 
@@ -8,56 +9,64 @@ import "./Login.css";
 
 function Login() {
   const {
-    global: {
-      dispatch,
-    },
-    tasks:{
-      dispatch: taskDispatch,
-    }
+    global: { dispatch,state:{
+      loading
+    } },
+    tasks: { dispatch: taskDispatch },
   } = useContext(GlobalContext);
   const history = useHistory();
-  dispatch({
-    type: "setUserName",
-    value: ''
-  });
-  // useEffect(() => {
-  //   dispatch({
-  //     type: "setUserName",
-  //     value: ''
-  //   });}, []);
+
+  useEffect(() => {
+    taskDispatch({
+      type: "setAllTasks",
+      value: [],
+    });
+    dispatch({
+      type: "setUserName",
+      value: "",
+    });
+  }, []);
 
   const startOrganize = async () => {
     try {
+      dispatch({type:"setLoaderVisibility", value:true})
       const data = await postAuthToken();
+
+      const alltaskByUser = await getAllTasks();
       dispatch({
         type: "setUserName",
-        value: data?.credentials?.name
+        value: data?.credentials?.name,
       });
-      const alltaskByUser = await getAllTasks();
-      console.log(alltaskByUser)
       taskDispatch({
         type: "setAllTasks",
-        value: alltaskByUser
+        value: alltaskByUser,
       });
-      history.push(`${'/tasks'}`);
+      history.push(`${"/tasks"}`);
+      dispatch({type:"setLoaderVisibility", value:false})
+
     } catch (err) {
-      console.log(err)
+      console.log(err);
+      dispatch({type:"setLoaderVisibility", value:true})
+
     }
   };
-  return (<div className="app">
-    <div>
-      <figure>
-        <img src={require('../../../assets/images/start.png')} />
-        <h2>Get organized your list</h2>
-        <figcaption>
-          Uni is simple and effective to-do list abd task manger app which helps you manage time
-        </figcaption>
-      </figure>
+  return (
+    <div className="app">
+     {loading && <Spinner/>}
+      <div>
+        <figure>
+          <img src={require("../../../assets/images/start.png")} />
+          <h2>Get organized your list</h2>
+          <figcaption>
+            Uni is simple and effective to-do list abd task manger app which
+            helps you manage time
+          </figcaption>
+        </figure>
+      </div>
+      <div className="button-container" onClick={startOrganize}>
+        Start Organize
+      </div>
     </div>
-    <div className="button-container" onClick={startOrganize}>
-      Start Organize
-    </div>
-  </div>
   );
 }
 

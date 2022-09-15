@@ -27,3 +27,6 @@ body {
 .text-centered{
   text-align: center;
 }
+section{
+  width: 100%;
+}

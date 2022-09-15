@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import TaskListPage from "./pages/TaskListPage";
 import TaskCategoryListPage from "./pages/TaskCategoryListPage";
@@ -19,13 +19,11 @@ const AppRoute: React.FC = () => {
       <Route  path="/task/:categoryName">
         <TaskCategoryListPage />
       </Route>
-      <Route  path="/task/add">
+      <Route  path="/add">
         <AddTaskPage />
       </Route>
       <Route path="*">
-        <div className="centered text-centered">
-          <h2>404: No Page Found!!</h2>
-        </div>
+      <LoginPage />
       </Route>
     </Switch>
   );
